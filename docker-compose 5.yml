@@ -1,0 +1,32 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: federated-xray-server:v1
+    container_name: federated-xray-server
+    ports:
+      - "9090:8080"
+    volumes:
+      - .:/app
+    command: ["python", "server.py"]    # 👉 THIS MUST BE SERVER.PY
+
+  client1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: federated-xray-client1:v1
+    container_name: federated-xray-client1
+    command: ["python", "client.py", "data/federated/hospital_1"]   # Correct
+    volumes:
+      - .:/app
+
+  client2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: federated-xray-client2:v1
+    container_name: federated-xray-client2
+    command: ["python", "client.py", "data/federated/hospital_2"]   # Correct
+    volumes:
+      - .:/app

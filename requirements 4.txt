@@ -1,0 +1,13 @@
+ml_dtypes>=0.2.0
+protobuf==3.20.3
+syft
+flwr
+torch
+torchvision
+opacus
+scikit-learn
+matplotlib
+seaborn
+Pillow
+numpy
+tqdm
